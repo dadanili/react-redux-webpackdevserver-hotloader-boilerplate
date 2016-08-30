@@ -1,0 +1,11 @@
+<div>
+<form ng-submit="addExpertise()">
+	<label>Add Expertise:</label>
+	<input size='50' ng-model='expertise' >
+	<button type='submit'>Add Expertise</button>
+</form>
+
+<ul>
+<li ng-repeat= "item in expertiseArray"><button> {{item.name}}</button></li>
+</ul>
+</div>
