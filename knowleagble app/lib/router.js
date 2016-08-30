@@ -6,4 +6,11 @@ router.post('/profile', handler.profile.post);
 
 router.get('/expertise', handler.expertise.get);
 router.post('/expertise', handler.expertise.post);
+router.delete('/expertise', handler.expertise.delete);
+
+// router.get('/charity', handler.charity.get);
+router.post('/charity', handler.charity.post);
+
+
+
 module.exports = router;

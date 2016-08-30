@@ -1,0 +1,20 @@
+<div class="myprofile">
+<div ng-show="previousPage === '/charity'">You have successfully completed your profile!</div>
+
+<p>
+<div class="loader" ng-show="loading" ></div>
+
+<div ng-hide="loading">
+<div><strong>First Name: </strong> {{myprofile.firstname}}</div>
+<div><strong>Last Name: </strong> {{myprofile.lastname}}</div>
+<div><strong>LinkedIn: </strong> {{myprofile.linkedin}}</div>
+<div><strong>Charity: </strong> {{myprofile.charity}}</div>
+
+<ul> <strong>Expertise: </strong>
+<li ng-repeat= "item in myprofile.expertise">{{item}}</li>
+</ul>
+</div>
+
+</p>
+
+</div>

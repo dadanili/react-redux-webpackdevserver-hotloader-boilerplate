@@ -39,22 +39,104 @@ angular.module('services', [])
 			return result.data;
 		})
 
+	},
+	removeExpertise: function(data) {
+		console.log('i am in factory remove expertise', data);
+		return $http({
+			method: 'DELETE',
+			url: '/api/expertise',
+			data: data,
+			headers: {"Content-Type": "application/json;charset=utf-8"}
+		})
+		.then(function(result){
+			console.log('result from removeExpertise', result.data)
+			return result.data;
+		})
 	}
+
+
  }
 })
 .factory('user', function() {
-	var userInfo = {};
+	var userInfo = null;
+	var userExpertise = [];
+
 	var setUser = function(user) {
-		console.log('in setuser before', userInfo)
 
 		userInfo = user;
-		console.log('in setuser after', userInfo)
 	}
 	var getUser = function() {
 		return userInfo;
 	}
+
+	var getExpertise = function() {
+		return userExpertise;
+	}
+
+	var setExpertise = function(expertise) {
+		// expertise.added = true;
+		userExpertise.push(expertise);
+	}
+
 	return {
 		setUser: setUser,
-		getUser: getUser
+		getUser: getUser,
+		getExpertise: getExpertise,
+		setExpertise: setExpertise
+	}
+})
+.factory('charityAjax', function($http) {
+	return {
+		addCharity: function(data) {
+			console.log('i am in factory add charity', data);
+			return $http({
+				method: 'post',
+				url: '/api/charity',
+				data: JSON.stringify(data),
+			})
+			.then(function(result){
+				console.log('result from removeExpertise', result.data)
+				return result.data;
+			})
+		}
+	}
+})
+.factory('profileAjax', function($http) {
+	return {
+		getProfile: function(data) {
+			console.log('i am in factory for get profile', data);
+			return $http({
+				method: 'get',
+				url: '/api/profile',
+				params: data,
+				// headers: {
+			 //        'Content-Type': 'application/x-www-form-urlencoded'
+			 //    }
+			})
+			.then(function(result){
+				console.log('result from get full profile', result)
+				return result.data;
+			})
+		}
+	}
+})
+.factory('page', function($location) {
+	var previousPage = '';
+
+	var setPreviousPage = function() {
+		console.log('in previousPage before', $location.path())
+
+		previousPage = $location.path();
+		console.log('in previousPage after', previousPage)
+	}
+	var getPreviousPage = function() {
+		console.log('in previousPage before', previousPage)
+
+		return previousPage;
+	}
+	return {
+		getPreviousPage: getPreviousPage,
+		setPreviousPage: setPreviousPage
+
 	}
 })
