@@ -6,17 +6,31 @@
 
 <div class="loader" ng-show="loading" ></div>
 
-<div ng-hide="loading || editprofile" >
-<div><strong>First Name: </strong> {{myprofile.firstname}}</div>
-<div><strong>Last Name: </strong> {{myprofile.lastname}}</div>
-<div><strong>LinkedIn: </strong> {{myprofile.linkedin}}</div>
-<div><strong>Charity: </strong> {{myprofile.charity}}</div>
+<div ng-hide="loading || editing" >
+	<div><strong>First Name: </strong> {{myprofile.firstname}}</div>
+	<div><strong>Last Name: </strong> {{myprofile.lastname}}</div>
+	<div><strong>LinkedIn: </strong> {{myprofile.linkedin}}</div>
+	<div><strong>Charity: </strong> {{myprofile.charity}}</div>
 
-<ul> <strong>Expertise: </strong>
-<li ng-repeat= "item in myprofile.expertise">{{item}}</li>
-</ul>
+	<ul> <strong>Expertise: </strong>
+	<li ng-repeat= "item in myprofile.expertise">{{item}}</li>
+	</ul>
 
 </div>
+
+<div ng-show="editing" >
+<button type='submit'>Update Profile</button>
+	<strong>First Name: </strong><input value= {{myprofile.firstname}}><br>
+	<strong>Last Name: </strong><input value= {{myprofile.lastname}}><br>
+	<strong>LinkedIn: </strong><input value= {{myprofile.linkedin}}><br>
+	<strong>Charity: </strong><input value= {{myprofile.charity}}><br>
+
+	<ul> <strong>Expertise: </strong>
+	<input ng-repeat= "item in myprofile.expertise" value={{item}}><br>
+	</ul>
+
+</div>
+
 
 </p>
 

@@ -63,7 +63,8 @@ module.exports = {
 			db.User.create({
 				firstname: req.body.firstname,
 				lastname: req.body.lastname,
-				linkedin: req.body.linkedin
+				linkedin: req.body.linkedin,
+				blurb: req.body.blurb
 			})
 			.then(function(user) {
 				console.log(user.get({

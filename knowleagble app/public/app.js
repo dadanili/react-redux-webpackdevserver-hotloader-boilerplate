@@ -36,7 +36,8 @@ angular.module('myapp', ['services', 'expertise', 'charity', 'myprofile', 'searc
 		var data = {
 			firstname: $scope.firstname,
 			lastname: $scope.lastname,
-			linkedin: $scope.linkedin
+			linkedin: $scope.linkedin,
+			blurb: $scope.blurb
 		};
 		basicAjax.submitProfile(data)
 		.then(function(result) {

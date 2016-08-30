@@ -1,14 +1,14 @@
 angular.module('myprofile', [])
 .controller('profileController', function($scope, page, profileAjax, user) {
-	$scope.editprofile = false;
+	$scope.editing = false;
 	var dani = {
 		firstname: "dani",
 		lastname: "li",
-		linkedn: "daniyidanli.linkedin.com",
+		linkedn: "daniyidanli",
 		id: 100000
 	}
 	$scope.editProfile = function() {
-		$scope.editProfile = !$scope.editProfile;
+		$scope.editing = !$scope.editing;
 	}
 	$scope.user = user.getUser();
 	console.log('user', $scope.user)

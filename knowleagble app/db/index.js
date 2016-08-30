@@ -7,6 +7,7 @@ var User = db.define('User', {
 	firstname: Sequelize.STRING, 
 	lastname: Sequelize.STRING,
 	linkedin: Sequelize.STRING,
+	blurb: Sequelize.STRING,
 });
 
 var Expertise = db.define('Expertise', {

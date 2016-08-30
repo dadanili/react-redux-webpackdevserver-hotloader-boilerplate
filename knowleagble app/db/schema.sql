@@ -6,6 +6,7 @@ id int NOT NULL AUTO_INCREMENT,
 firstname varchar(30) NOT NULL,
 lastname varchar(30) NOT NULL,
 linkedin varchar(512) NOT NULL,
+blurb varchar(1000) NOT NULL,
 charityId varchar(100),
 PRIMARY KEY (ID)
 );
