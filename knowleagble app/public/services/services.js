@@ -120,6 +120,21 @@ angular.module('services', [])
 		}
 	}
 })
+.factory('searchAjax', function($http) {
+	return {
+		getAllProfile: function() {
+			console.log('i am in factory for all profile');
+			return $http({
+				method: 'get',
+				url: '/api/allprofiles',
+			})
+			.then(function(result){
+				console.log('result from get full profile', result)
+				return result.data;
+			})
+		}
+	}
+})
 .factory('page', function($location) {
 	var previousPage = '';
 

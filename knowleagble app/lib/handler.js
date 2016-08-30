@@ -27,6 +27,7 @@ module.exports = {
 						user.getExpertises()
 						.then(function(expertises) {
 							expertises.forEach(function(expertise) {
+								console.log(expertise, '=====================expertise')
 								db.Expertise.findById(expertise.UserExpertise.ExpertiseId)
 								.then(function(foundExpertise) {
 									console.log('===expertise name', foundExpertise, foundExpertise.name);
@@ -159,10 +160,38 @@ module.exports = {
 	},
 	search: {
 		get: function(req, res) {
+			var allUsers = [];
 			db.User.findAll()
 			.then(function(users) {
-				console.log(users);
-				res.send(users);
+				users.forEach(function(user) {
+					var currUser = user.get({plain: true});
+					console.log('===', currUser)
+					currUser.expertise = [];
+					currUser.charity = '';
+					user.getExpertises()
+					.then(function(expertises) {
+						expertises.forEach(function(expertise) {
+							console.log('----expertise name!!',expertise.name);
+							currUser.expertise.push(expertise.name);
+						})
+						console.log('user', user)
+						user.getCharities()
+						.then(function(charities) {
+							charities.forEach(function(charity){
+								console.log('charity name!!!',charities);
+								currUser.charity = charities[0].name;
+
+								allUsers.push(currUser);
+								console.log(']]]] all users', allUsers.length, users.length)
+								if (allUsers.length === users.length) {
+									console.log('all users-----------------', allUsers);
+									res.send({data: allUsers});
+								};
+							})
+
+						})
+					})
+				})
 			})
 		},
 	}

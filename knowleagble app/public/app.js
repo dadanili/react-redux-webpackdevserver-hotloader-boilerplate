@@ -1,4 +1,4 @@
-angular.module('myapp', ['services', 'expertise', 'charity', 'myprofile', 'ngRoute'])
+angular.module('myapp', ['services', 'expertise', 'charity', 'myprofile', 'search', 'ngRoute'])
 .config(function($routeProvider){
 	$routeProvider
 		.when('/', {
@@ -20,6 +20,10 @@ angular.module('myapp', ['services', 'expertise', 'charity', 'myprofile', 'ngRou
 		.when('/myprofile', {
 			templateUrl: 'myprofile/myprofile.html',
       		controller: 'profileController'
+		})
+		.when('/search', {
+			templateUrl: 'search/search.html',
+      		controller: 'searchController'
 		})
 		.otherwise({
 			redirectTo: '/'

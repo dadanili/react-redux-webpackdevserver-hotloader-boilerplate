@@ -10,16 +10,19 @@
 	<script type="text/javascript" src="services/services.js"></script>
 	<script type="text/javascript" src="charity/charity.js"></script>
 	<script type="text/javascript" src="myprofile/myprofile.js"></script>
+	<script type="text/javascript" src="search/search.js"></script>
 
 
 </head>
 <body ng-controller= "myController">
 	<nav class="navigation"> 
 		<div>
-		<ul>
-		<li>Profile</li>
+			<ul>
+				<li><a href= "#/basicinfo">Create Profile</a></li>
+				<li><a href= "#/search">Search Profiles</a></li>
+				<li><a href= "#/myprofile">My Profile</a></li>
 
-		</ul>
+			</ul>
 		</div>
 	</nav>
 	<div ng-view> </div>

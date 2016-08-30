@@ -11,6 +11,7 @@ router.delete('/expertise', handler.expertise.delete);
 // router.get('/charity', handler.charity.get);
 router.post('/charity', handler.charity.post);
 
+router.get('/allprofiles', handler.search.get);
 
 
 module.exports = router;

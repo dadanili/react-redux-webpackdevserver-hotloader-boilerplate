@@ -1,0 +1,20 @@
+<form>
+
+Search
+<input type='search' size='50' ng-model='search' placeholder="Search...">
+
+<ul class="profiles" id="profiles">
+	<li ng-repeat="user in allUsers | filter:search">
+
+		<div><strong>First Name: </strong> {{user.firstname}}</div>
+		<div><strong>Last Name: </strong> {{user.lastname}}</div>
+		<div><strong>LinkedIn: </strong> {{user.linkedin}}</div>
+		<div><strong>Charity: </strong> {{user.charity}}</div>
+
+		<ul> <strong>Expertise: </strong>
+			<li ng-repeat= "item in user.expertise">{{item}}</li>
+		</ul>
+	</li>
+</ul>
+
+</form>
