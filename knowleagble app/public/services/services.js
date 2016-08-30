@@ -60,13 +60,21 @@ angular.module('services', [])
 .factory('user', function() {
 	var userInfo = null;
 	var userExpertise = [];
+	var defaultUser = {
+		firstname: "dani",
+		lastname: "li",
+		linkedin: "daniyidanli",
+		id: 1,
+		charity: "Salvation Army",
+		expertise: ["Karaoke", "Painting", "Startups"]
+	}
 
 	var setUser = function(user) {
 
 		userInfo = user;
 	}
 	var getUser = function() {
-		return userInfo;
+		return userInfo || defaultUser;
 	}
 
 	var getExpertise = function() {

@@ -2,9 +2,11 @@
 <div ng-show="previousPage === '/charity'">You have successfully completed your profile!</div>
 
 <p>
+<button ng-click='editProfile()'> <a>Edit Profile </a></button>
+
 <div class="loader" ng-show="loading" ></div>
 
-<div ng-hide="loading">
+<div ng-hide="loading || editprofile" >
 <div><strong>First Name: </strong> {{myprofile.firstname}}</div>
 <div><strong>Last Name: </strong> {{myprofile.lastname}}</div>
 <div><strong>LinkedIn: </strong> {{myprofile.linkedin}}</div>
@@ -13,6 +15,7 @@
 <ul> <strong>Expertise: </strong>
 <li ng-repeat= "item in myprofile.expertise">{{item}}</li>
 </ul>
+
 </div>
 
 </p>
