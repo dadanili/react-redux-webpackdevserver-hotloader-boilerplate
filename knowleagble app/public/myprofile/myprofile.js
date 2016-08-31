@@ -1,5 +1,5 @@
 angular.module('myprofile', [])
-.controller('profileController', function($scope, page, profileAjax, user) {
+.controller('profileController', function($scope, page, profileAjax, user, $window) {
 	$scope.editing = false;
 	var dani = {
 		firstname: "dani",
@@ -26,5 +26,21 @@ angular.module('myprofile', [])
 		})
 	}
 	$scope.getProfile($scope.user)
+	$scope.updateProfile = function(firstname) {
+		console.log(firstname, 'new first name')
+		var data = {
+			id: $scope.myprofile.id,
+			blurb: $scope.myprofile.blurb,
+			linkedin: $scope.myprofile.linkedin,
+			firstname: $scope.myprofile.firstname,
+			lastname: $scope.myprofile.lastname
+		}
+		profileAjax.updateProfile(data)
+		.then(function(response) {
+			console.log('after updating profile', response)
+			$window.location.reload();
+		})
+
+	}
 
 })

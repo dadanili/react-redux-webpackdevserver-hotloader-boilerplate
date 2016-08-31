@@ -3,6 +3,7 @@ var handler = require('./handler')
 
 router.get('/profile', handler.profile.get);
 router.post('/profile', handler.profile.post);
+router.put('/profile', handler.profile.put);
 
 router.get('/expertise', handler.expertise.get);
 router.post('/expertise', handler.expertise.post);

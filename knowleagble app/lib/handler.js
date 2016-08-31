@@ -72,6 +72,19 @@ module.exports = {
 			    }));
 				res.send(user)
 			})
+		}, 
+		put: function(req, res) {
+			console.log('in put handler', req.body);
+			db.User.update({
+				blurb: req.body.blurb, 
+				firstname: req.body.firstname,
+				lastname: req.body.lastname, 
+				linkedin: req.body.linkedin
+			},{where: {id: req.body.id}})
+			.then(function(response) {
+				console.log('success put!', response)
+				res.send(response);
+			})
 		}
 	},
 

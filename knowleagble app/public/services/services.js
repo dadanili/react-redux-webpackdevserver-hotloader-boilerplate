@@ -125,6 +125,14 @@ angular.module('services', [])
 				console.log('result from get full profile', result)
 				return result.data;
 			})
+		},
+		updateProfile: function(data) {
+			console.log("i am in factory for updateProfile", data)
+			return $http({
+				method: 'PUT',
+				url: '/api/profile',
+				data: data
+			})
 		}
 	}
 })

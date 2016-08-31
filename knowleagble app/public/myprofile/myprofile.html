@@ -1,16 +1,17 @@
 <div class="myprofile">
 <div ng-show="previousPage === '/charity'">You have successfully completed your profile!</div>
 
-<p>
-<button ng-click='editProfile()'> <a>Edit Profile </a></button>
+
 
 <div class="loader" ng-show="loading" ></div>
 
 <div ng-hide="loading || editing" >
+<button ng-click='editProfile()'> <a>Edit Profile </a></button>
 	<div><strong>First Name: </strong> {{myprofile.firstname}}</div>
 	<div><strong>Last Name: </strong> {{myprofile.lastname}}</div>
 	<div><strong>LinkedIn: </strong> {{myprofile.linkedin}}</div>
 	<div><strong>Charity: </strong> {{myprofile.charity}}</div>
+	<div><strong>Description: </strong> {{myprofile.blurb}}</div>
 
 	<ul> <strong>Expertise: </strong>
 	<li ng-repeat= "item in myprofile.expertise">{{item}}</li>
@@ -18,20 +19,46 @@
 
 </div>
 
-<div ng-show="editing" >
-<button type='submit'>Update Profile</button>
-	<strong>First Name: </strong><input value= {{myprofile.firstname}}><br>
-	<strong>Last Name: </strong><input value= {{myprofile.lastname}}><br>
-	<strong>LinkedIn: </strong><input value= {{myprofile.linkedin}}><br>
-	<strong>Charity: </strong><input value= {{myprofile.charity}}><br>
+<form ng-show="editing" >
 
-	<ul> <strong>Expertise: </strong>
-	<input ng-repeat= "item in myprofile.expertise" value={{item}}><br>
-	</ul>
-
-</div>
+<!-- <input type="text" ng-model="rootFolders" ng-init="rootFolders='Bob'" value="Bob"> -->
 
 
-</p>
+	<button ng-click="updateProfile(firstname.element)">Update Profile</button><br>
+		<strong>First Name: </strong><input ng-model="myprofile.firstname" ><br>
+		<strong>Last Name: </strong><input ng-model="myprofile.lastname" ><br>
+		<strong>LinkedIn: </strong><input ng-model="myprofile.linkedin"><br>
+		<div><strong>Charity: </strong> {{myprofile.charity}}</div><br>
+		<strong>Description: </strong><input ng-model="myprofile.blurb" size="100" ><br>
+		<ul> <strong>Expertise: </strong>
+		<input class='add' ng-repeat= "item in myprofile.expertise" value={{item}} size="40" ng-class="{mine: item.added}"><br>
+		<button class="remove" ng-show="item.added" ng-click="removeExpertiseFromProfile($index)" ng-class="{delete: !item.added}">-</button>
+		<button class="remove" ng-show="item.added" ng-click="removeExpertiseFromProfile($index)" ng-class="{delete: !item.added}">-</button>
+		</ul>
+<hr>
+
+	<div ng-controller="expertiseController">
+		<form name="form" ng-submit="addExpertise()">
+			<label>Add Expertise:</label>
+			<input size='50' ng-model='expertise' required>
+			<button type='submit' ng-disabled="form.$invalid">Add Expertise</button>
+			<button ng-click="nextPage()">Next Page</button>
+		</form>
+
+		<ul>
+			<li class="expertise" ng-repeat= "item in expertiseArray">
+				<button ng-click="selectExpertise($index)" size="30" ng-class="{mine: item.added}"> {{item.name}}</button>
+				<button class="add" ng-click="addExpertiseToProfile($index)" ng-hide="item.added" ng-class="{add: item.added}">+</button>
+				<button class="remove" ng-show="item.added" ng-click="removeExpertiseFromProfile($index)" ng-class="{delete: !item.added}">-</button>
+		<!-- ng-disabled='shortlyForm.$invalid' -->
+				<!-- <button class="delete" ng-click="">x</button> -->
+			</li>
+		</ul>
+
+	</div>
+
+
+</form>
+
 
 </div>
