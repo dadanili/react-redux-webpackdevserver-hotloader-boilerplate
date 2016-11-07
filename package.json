@@ -1,7 +1,7 @@
 {
-  "name": "",
-  "version": "1.0.0",
-  "description": "",
+  "name": "react-redux-webpack-dev-server-hot-boilerplate",
+  "version": "1.0.1",
+  "description": "React app using Redux, React-Router, Babel, Webpack, and Hot Loader and running on Webpack Dev Server",
   "main": "index.jsx",
   "scripts": {
     "start": "node server.js"
