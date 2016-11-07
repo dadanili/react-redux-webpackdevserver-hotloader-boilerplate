@@ -20,5 +20,6 @@ Utilizing Webpack Dev Server and Hot Loader to render React redux app.
 - React-router
 
 ##Release History
-1.0.0 Initial release
-1.0.1 Updated git clone source
+- 1.0.0 Initial release
+- 1.0.1 Updated git clone source
+- 1.0.2 Updated README
